@@ -15,29 +15,39 @@ namespace BlackJack
     {
         Scene scene;
 
-   
-
-        int timerTicks = 0;
-
-     //   private bool isBid = false;
 
 
-        //int randomIndex = random.Next(0, scene.Cards.Count);
-        //Card randomCard = scene.Cards.ElementAt(randomIndex);
+        int DealTimerTicks = 0;
+
+        int HitTimerTicks = 0;
+
+        int StandTimerTicks = 0;
 
         Card firstRandomPlayerCard;
         Card secondRandomPlayerCard;
         Card firstRandomDealerCard;
         Card secondRandomDealerCard;
 
+        Card HitRandomPlayerCard;
+
+        Card StandRandomDealerCard;
+
         private bool firstCardsMoving = true;
         private bool secondCardsMoving = false;
+
+        private bool dealerCardMoving = false;
 
         private Image actualImage;
 
         Random random = new Random();
 
-       
+        int stopPosition;
+
+        int HitCardStopPosition;
+
+        int StandCardStopPosition;
+
+
 
         public Image setCoveredImage()
         {
@@ -53,7 +63,7 @@ namespace BlackJack
         }
         public void generateFirstRandomCards()
         {
-            
+
 
             int dealerRandomIndex1 = random.Next(0, scene.Cards.Count);
 
@@ -71,10 +81,10 @@ namespace BlackJack
 
             int playerRandomIndex1 = random.Next(0, scene.Cards.Count);
 
-           
+
             firstRandomPlayerCard = scene.Cards.ElementAt(playerRandomIndex1);
 
-            //   firstRandomPlayerCard.Image = setAndResizeImage();
+       
 
             scene.Player.Hand.Add(firstRandomPlayerCard);
 
@@ -103,103 +113,104 @@ namespace BlackJack
         }
         public Form1()
         {
-        
+
             InitializeComponent();
 
             scene = new Scene();
             this.DoubleBuffered = true;
 
-          //  lblTotalPlayingCards.Text = "Total Cards: "+ scene.Cards.Count.ToString();
+            //  lblTotalPlayingCards.Text = "Total Cards: "+ scene.Cards.Count.ToString();
 
-            generateFirstRandomCards();
+            //  generateFirstRandomCards();
 
             lblBid.Text = "Bid: $0";
 
-      
+         //   lblTotalPlayingCards.Text = "Total cards: " + scene.Cards.Count.ToString();
+
+
         }
 
         //public void updateTotalCards()
         //{
-        //    lblTotalPlayingCards.Text="Total Cards: " + scene.Cards.Count.ToString();
+        //    lblTotalPlayingCards.Text = "Total cards: " + scene.Cards.Count.ToString();
         //}
 
         private void rbFiveDollarsBid_Click(object sender, EventArgs e)
         {
-          
-                btnDeal.Visible = true;
-        
-          
-                scene.Player.TotalMoney -= 5;
-                lblPlayerMoney.Text = "Player total:" + "$" + scene.Player.TotalMoney.ToString();
-                scene.Bid += 5;
-                lblBid.Text = "Bid: $" + scene.Bid.ToString();
-            
-           
+
+            btnDeal.Visible = true;
+
+
+            scene.Player.TotalMoney -= 5;
+            lblPlayerMoney.Text = "Player total:" + "$" + scene.Player.TotalMoney.ToString();
+            scene.Bid += 5;
+            lblBid.Text = "Bid: $" + scene.Bid.ToString();
+
+
         }
 
         private void rbFiftyDollarBid_Click(object sender, EventArgs e)
         {
 
-                btnDeal.Visible = true;
-            
-                scene.Player.TotalMoney -= 50;
-                lblPlayerMoney.Text = "Player total:" + "$" + scene.Player.TotalMoney.ToString();
-                scene.Bid += 50;
-                lblBid.Text = "Bid: $" + scene.Bid.ToString();
-           
+            btnDeal.Visible = true;
+
+            scene.Player.TotalMoney -= 50;
+            lblPlayerMoney.Text = "Player total:" + "$" + scene.Player.TotalMoney.ToString();
+            scene.Bid += 50;
+            lblBid.Text = "Bid: $" + scene.Bid.ToString();
+
 
         }
 
         private void rbTenDollarBid_Click_1(object sender, EventArgs e)
         {
-                btnDeal.Visible = true;
-                scene.Player.TotalMoney -= 10;
-                lblPlayerMoney.Text = "Player total:" + "$" + scene.Player.TotalMoney.ToString();
-                scene.Bid += 10;
-                lblBid.Text = "Bid: $" + scene.Bid.ToString();
-            
+            btnDeal.Visible = true;
+            scene.Player.TotalMoney -= 10;
+            lblPlayerMoney.Text = "Player total:" + "$" + scene.Player.TotalMoney.ToString();
+            scene.Bid += 10;
+            lblBid.Text = "Bid: $" + scene.Bid.ToString();
+
         }
 
         public void updateScore()
         {
-            lblPlayerScore.Text = "Player: "+ scene.Player.Score.ToString();
+            // scene.Player.CalculateScore();
+            lblPlayerScore.Text = "Player: " + scene.Player.Score.ToString();
             lblDealerScore.Text = "Dealer: " + scene.Dealer.Score.ToString();
 
         }
 
-        //public void updateTotalMoneyOfPlayer()
-        //{
-        //    int bidMoney = int.Parse(lblBid.Text.Substring(1, lblBid.Text.Length));
-        //    int totalWinMoney = bidMoney * 2;
-        //    lblPlayerMoney.Text += totalWinMoney.ToString();
-        //}
-
-        public void checkIf21()
+        public void updateTotalMoneyOfPlayer()
         {
-
+            int bidMoney = scene.Bid;
+            scene.Player.TotalMoney += bidMoney*2;
+            
+            lblPlayerMoney.Text = "Player total: $" + scene.Player.TotalMoney.ToString();
         }
+
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
 
 
-            timerTicks++;
+            DealTimerTicks++;
             if (firstCardsMoving)
             {
                 scene.moveDealerCard(firstRandomDealerCard);
 
-                scene.movePlayerCard(firstRandomPlayerCard);           
-               
-                if (timerTicks == 30)
-                {
+                scene.movePlayerCard(firstRandomPlayerCard);
 
-                    scene.Player.Score+= firstRandomPlayerCard.Value;
-                   // scene.Dealer.Score+= firstRandomDealerCard.Value;
+                if (DealTimerTicks == 30)
+                {
+                    stopPosition = DealTimerTicks - 3; ;
+                    scene.Player.Score += firstRandomPlayerCard.Value;
+              
                     updateScore();
-           
+                  //  updateTotalCards();
                     firstCardsMoving = false;
                     secondCardsMoving = true;
-                    timerTicks = 0;
+                    DealTimerTicks = 0;
                 }
             }
 
@@ -208,55 +219,311 @@ namespace BlackJack
                 scene.moveDealerCard(secondRandomDealerCard);
 
                 scene.movePlayerCard(secondRandomPlayerCard);
-                if (timerTicks == 27)
+                if (DealTimerTicks == stopPosition)
                 {
-                    scene.Player.Score+= secondRandomPlayerCard.Value;
+                    stopPosition = DealTimerTicks -4;
+                    scene.Player.Score += secondRandomPlayerCard.Value;
                     scene.Dealer.Score += secondRandomDealerCard.Value;
                     updateScore();
-                //    updateTotalCards();
+                   // updateTotalCards();
 
                     secondCardsMoving = false;
-                    timerTicks = 0;
+                    firstCardsMoving = true;
+                    DealTimerTicks = 0;
+                    HitCardStopPosition = stopPosition+3;
+                    StandCardStopPosition = stopPosition+3;
+
                     timer1.Stop();
-                    //if (scene.Player.Score == 21)
-                    //{
-                    //    updateTotalMoneyOfPlayer();
-                    //    MessageBox.Show("You win !!", "Black Jack", MessageBoxButtons.OK);
-                       
-                    //}
+         
                 }
             }
 
-           
+
 
             Invalidate();
         }
-      
-        
+
+
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             scene.Player.Draw(e.Graphics);
             scene.Dealer.Draw(e.Graphics);
 
-           
+
 
         }
 
         private void btnDeal_Click(object sender, EventArgs e)
         {
+            generateFirstRandomCards();
             lblPlayerScore.Visible = true;
             lblDealerScore.Visible = true;
             btnHit.Visible = true;
             btnStand.Visible = true;
             btnDeal.Visible = false;
+            btnAllIn.Visible = false;
             rbFiveDollarsBid.Visible = false;
             rbFiftyDollarBid.Visible = false;
             rbTenDollarBid.Visible = false;
             timer1.Start();
- 
+
         }
 
 
+
+        private void btnHit_Click(object sender, EventArgs e)
+        {
+            int randomIndexOfPlayerCard = random.Next(0, scene.Cards.Count);
+            HitRandomPlayerCard = scene.Cards.ElementAt(randomIndexOfPlayerCard);
+            scene.Cards.Remove(HitRandomPlayerCard);
+            scene.Player.Hand.Add(HitRandomPlayerCard);
+
+            scene.Player.Score += HitRandomPlayerCard.Value;
+          //  updateTotalCards();
+            timerHit.Start();
+        }
+
+        private void Reset()
+        {
+            firstCardsMoving = true;
+            secondCardsMoving = false;
+
+            dealerCardMoving = false;
+
+            DealTimerTicks = 0;
+
+            HitTimerTicks = 0;
+
+            StandTimerTicks = 0;
+
+            scene.Bid = 0;
+            if (scene.Cards.Count < 15) // check if the total cards are less than 15
+            {
+                scene = new Scene(); // put all cards in the deck again
+               
+            }
+          //  scene.putAllCardsInDeck();
+            scene.Dealer.Reset();
+            scene.Player.Reset();
+            btnHit.Visible = false;
+            btnStand.Visible = false;
+            btnAllIn.Visible = true;
+            lblDealerScore.Text = "";
+            lblPlayerScore.Text = "";
+            lblBid.Text = "Bid: $0";
+            rbFiftyDollarBid.Visible = true;
+            rbFiveDollarsBid.Visible = true;
+            rbTenDollarBid.Visible = true;
+            btnDeal.Visible = false;
+           
+           // updateTotalCards();
+
+        }
+
+
+        private void ResetGame()
+        {
+            if (scene.Player.TotalMoney == 0)
+            {
+                DialogResult result = MessageBox.Show("You lost all your money. Do you want to start a new game?", "",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                {
+                    Close();
+                }
+                else
+                {
+                    Reset();
+                    scene.Player.TotalMoney = 200;
+                    lblPlayerMoney.Text = "Player money: $200";
+                }
+
+            }
+            else
+            {
+                Reset();
+            }
+          
+        }
+
+        private void timerHit_Tick(object sender, EventArgs e)
+        {
+           
+            scene.movePlayerCard(HitRandomPlayerCard);
+            HitTimerTicks++;
+            if (HitTimerTicks == HitCardStopPosition)
+            {
+
+                HitCardStopPosition = HitTimerTicks-2;
+                updateScore();
+                if (scene.Player.Score > 21)
+                {
+                    timerHit.Stop();
+
+                    DialogResult result = MessageBox.Show("You lost !!!", "Bust!", MessageBoxButtons.OK);
+                    if (result == DialogResult.OK)
+                    {
+                        ResetGame();
+                    }
+
+
+                    HitTimerTicks = 0;
+
+
+                }
+                else
+                {
+                    HitTimerTicks = 0;
+                    timerHit.Stop();
+                }
+
+            }
+
+            Invalidate();
+        }
+
+        private void showMessageBoxForNeutral()
+        {
+            DialogResult result = MessageBox.Show("No one won, the score of both is 21", "", MessageBoxButtons.OK);
+            if (result == DialogResult.OK)
+            {
+                ResetGame();
+            }
+        }
+
+
+        private void showMessageBoxForLost()
+        {
+            DialogResult result = MessageBox.Show("You lost !!!", "Bust!", MessageBoxButtons.OK);
+            if (result == DialogResult.OK)
+            {
+                ResetGame();
+            }
+        }
+
+        private void showMessageBoxForWin()
+        {
+            DialogResult result = MessageBox.Show("You won !!!", "Congratulations!", MessageBoxButtons.OK);
+            if (result == DialogResult.OK)
+            {
+                ResetGame();
+            }
+        }
+
+        private void timerStand_Tick(object sender, EventArgs e)
+        {
+            StandTimerTicks++;
+            if (!dealerCardMoving)
+            {
+                if (scene.Dealer.Score > scene.Player.Score)
+                {
+                    timerStand.Stop();
+                    showMessageBoxForLost();
+                  
+                }
+                else
+                {
+                    
+                    dealerCardMoving = true;
+                    StandTimerTicks = 0;
+                    int randomDealerCardIndex = random.Next(0, scene.Cards.Count);
+                    StandRandomDealerCard = scene.Cards.ElementAt(randomDealerCardIndex);
+                    scene.Dealer.Hand.Add(StandRandomDealerCard);
+                    scene.Cards.Remove(StandRandomDealerCard);
+                 //   updateTotalCards();
+              
+                }
+
+            }
+
+            else
+            {
+
+                if (StandTimerTicks!= StandCardStopPosition)
+                {
+                    scene.moveDealerCard(StandRandomDealerCard);
+                }
+                else 
+                {
+
+                    timerStand.Stop();
+                    StandCardStopPosition-=2;
+                    scene.Cards.Remove(StandRandomDealerCard);
+                    scene.Dealer.Hand.Add(StandRandomDealerCard);
+                    scene.Dealer.Score += StandRandomDealerCard.Value;
+
+                    updateScore();
+                    if (scene.Dealer.Score > 21)
+                    {
+                        timerStand.Stop();
+                        updateTotalMoneyOfPlayer();
+
+                        showMessageBoxForWin();
+
+                    }
+                    else if (scene.Dealer.Score > scene.Player.Score)
+                    {
+                        timerStand.Stop();
+                        showMessageBoxForLost();
+                    } 
+                    else if(scene.Dealer.Score==21 && scene.Player.Score == 21)
+                    {
+                        timerStand.Stop();
+                        scene.Player.TotalMoney += scene.Bid;
+                        showMessageBoxForNeutral();
+                    }
+                    else
+                    {
+                        dealerCardMoving = false;
+                        StandTimerTicks = 0;
+
+                        timerStand.Start();
+                      
+
+                    }
+
+
+                }
+
+
+            }
+            Invalidate();
+
+
+        }
+    
+            private void btnStand_Click(object sender, EventArgs e)
+            {
+                Card firstDealerCoveredCard = scene.Dealer.Hand.ElementAt(0);
+                firstDealerCoveredCard.Image = actualImage;
+                scene.Dealer.Score += firstDealerCoveredCard.Value;
+                updateScore();
+              
+                btnHit.Visible = false;
+                btnStand.Visible = false;
+
+                timerStand.Start();
+
+                Invalidate();
+            }
+
+        private void btnAllIn_Click(object sender, EventArgs e)
+        {
+            
+            scene.Bid += scene.Player.TotalMoney;
+            scene.Player.TotalMoney = 0;
+            lblBid.Text = "Bid: $" + scene.Bid;
+            lblPlayerMoney.Text = "Player money: $0";
+            rbFiftyDollarBid.Visible = false;
+            rbFiveDollarsBid.Visible = false;
+            rbTenDollarBid.Visible = false;
+            btnDeal.Visible = true;
+            btnAllIn.Visible = false;
+
+        }
+
+       
     }
-}
+    }
+

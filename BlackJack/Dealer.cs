@@ -11,8 +11,6 @@ namespace BlackJack
     {
         public List<Card> Hand { get; set; } = new List<Card>();
 
-
-
         public int Score { get; set; } = 0;
 
         public Dealer()
@@ -26,6 +24,12 @@ namespace BlackJack
             {
                 card.DrawDealerCard(g);
             }
+        }
+
+        public void Reset()
+        {
+            Hand = new List<Card>();
+            Score = 0;
         }
 
     }

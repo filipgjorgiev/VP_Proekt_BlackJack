@@ -20,7 +20,7 @@ namespace BlackJack
 
         public Point Position_Of_Player_Card { get; set; } = new Point(815, 400);
 
-
+   
         public int Value { get; set; }
 
         public Card(Image image, String numberOfCard, string signOfCard,int value)
@@ -30,11 +30,6 @@ namespace BlackJack
             Suit = signOfCard;
             Value = value;
         }
-
-        //public void setPositionOfCards(Point pictureBoxLocation)
-        //{
-        //    PositionOfCard = new Point(pictureBoxLocation.X, pictureBoxLocation.Y);
-        //}
 
         public void movePlayerCard()
         {
@@ -59,9 +54,6 @@ namespace BlackJack
         }
 
 
-        //internal void Draw()
-        //{
-        //    throw new NotImplementedException();
-        //}
+      
     }
 }

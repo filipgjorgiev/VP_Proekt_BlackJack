@@ -42,6 +42,9 @@ namespace BlackJack
             this.lblPlayerScore = new System.Windows.Forms.Label();
             this.lblDealerScore = new System.Windows.Forms.Label();
             this.lblTotalCards = new System.Windows.Forms.Label();
+            this.timerHit = new System.Windows.Forms.Timer(this.components);
+            this.timerStand = new System.Windows.Forms.Timer(this.components);
+            this.btnAllIn = new System.Windows.Forms.Button();
             this.rbTenDollarBid = new BlackJack.RoundButton();
             this.rbFiftyDollarBid = new BlackJack.RoundButton();
             this.rbFiveDollarsBid = new BlackJack.RoundButton();
@@ -73,6 +76,7 @@ namespace BlackJack
             this.btnHit.Text = "Hit";
             this.btnHit.UseVisualStyleBackColor = false;
             this.btnHit.Visible = false;
+            this.btnHit.Click += new System.EventHandler(this.btnHit_Click);
             // 
             // btnStand
             // 
@@ -87,6 +91,7 @@ namespace BlackJack
             this.btnStand.Text = "Stand";
             this.btnStand.UseVisualStyleBackColor = false;
             this.btnStand.Visible = false;
+            this.btnStand.Click += new System.EventHandler(this.btnStand_Click);
             // 
             // lblPlayerMoney
             // 
@@ -176,10 +181,33 @@ namespace BlackJack
             this.lblTotalCards.Size = new System.Drawing.Size(0, 17);
             this.lblTotalCards.TabIndex = 13;
             // 
+            // timerHit
+            // 
+            this.timerHit.Interval = 30;
+            this.timerHit.Tick += new System.EventHandler(this.timerHit_Tick);
+            // 
+            // timerStand
+            // 
+            this.timerStand.Interval = 30;
+            this.timerStand.Tick += new System.EventHandler(this.timerStand_Tick);
+            // 
+            // btnAllIn
+            // 
+            this.btnAllIn.BackColor = System.Drawing.Color.DarkBlue;
+            this.btnAllIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F);
+            this.btnAllIn.ForeColor = System.Drawing.Color.White;
+            this.btnAllIn.Location = new System.Drawing.Point(20, 480);
+            this.btnAllIn.Name = "btnAllIn";
+            this.btnAllIn.Size = new System.Drawing.Size(130, 52);
+            this.btnAllIn.TabIndex = 14;
+            this.btnAllIn.Text = "All-in";
+            this.btnAllIn.UseVisualStyleBackColor = false;
+            this.btnAllIn.Click += new System.EventHandler(this.btnAllIn_Click);
+            // 
             // rbTenDollarBid
             // 
             this.rbTenDollarBid.BackColor = System.Drawing.Color.Transparent;
-            this.rbTenDollarBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.8F);
+            this.rbTenDollarBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
             this.rbTenDollarBid.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.rbTenDollarBid.Image = global::BlackJack.Properties.Resources.black_poker_chip;
             this.rbTenDollarBid.Location = new System.Drawing.Point(147, 550);
@@ -193,7 +221,7 @@ namespace BlackJack
             // rbFiftyDollarBid
             // 
             this.rbFiftyDollarBid.BackColor = System.Drawing.Color.Transparent;
-            this.rbFiftyDollarBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.8F);
+            this.rbFiftyDollarBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
             this.rbFiftyDollarBid.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.rbFiftyDollarBid.Image = global::BlackJack.Properties.Resources.red_poker_chip;
             this.rbFiftyDollarBid.Location = new System.Drawing.Point(293, 550);
@@ -208,12 +236,12 @@ namespace BlackJack
             // 
             this.rbFiveDollarsBid.BackColor = System.Drawing.Color.Transparent;
             this.rbFiveDollarsBid.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rbFiveDollarsBid.BackgroundImage")));
-            this.rbFiveDollarsBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.8F);
+            this.rbFiveDollarsBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
             this.rbFiveDollarsBid.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.rbFiveDollarsBid.Image = global::BlackJack.Properties.Resources.poker_chip2;
-            this.rbFiveDollarsBid.Location = new System.Drawing.Point(21, 554);
+            this.rbFiveDollarsBid.Location = new System.Drawing.Point(12, 555);
             this.rbFiveDollarsBid.Name = "rbFiveDollarsBid";
-            this.rbFiveDollarsBid.Size = new System.Drawing.Size(102, 97);
+            this.rbFiveDollarsBid.Size = new System.Drawing.Size(110, 100);
             this.rbFiveDollarsBid.TabIndex = 4;
             this.rbFiveDollarsBid.Text = "$5";
             this.rbFiveDollarsBid.UseVisualStyleBackColor = false;
@@ -226,6 +254,7 @@ namespace BlackJack
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::BlackJack.Properties.Resources.Green_Table11;
             this.ClientSize = new System.Drawing.Size(1306, 840);
+            this.Controls.Add(this.btnAllIn);
             this.Controls.Add(this.lblTotalCards);
             this.Controls.Add(this.rbTenDollarBid);
             this.Controls.Add(this.rbFiftyDollarBid);
@@ -266,6 +295,9 @@ namespace BlackJack
         private RoundButton rbFiftyDollarBid;
         private RoundButton rbTenDollarBid;
         private System.Windows.Forms.Label lblTotalCards;
+        private System.Windows.Forms.Timer timerHit;
+        private System.Windows.Forms.Timer timerStand;
+        private System.Windows.Forms.Button btnAllIn;
     }
 }
 

@@ -9,8 +9,9 @@ namespace BlackJack
 {
     class Scene
     {
-        public List<Card> Cards { get; set; } = new List<Card>();
+        public List<Card> Cards { get; set; }
 
+        Random random = new Random();
 
         public Player Player { get; set; }
 
@@ -24,6 +25,7 @@ namespace BlackJack
 
         public Scene()
         {
+            Cards = new List<Card>();
             Bid = 0;
             Player = new Player();
             Dealer = new Dealer();
@@ -77,13 +79,17 @@ namespace BlackJack
             }
         }
 
-        //public void setPositionOfCards(Point pictureBoxLocation)
-        //{
-        //    foreach(Card card in Cards)
-        //    {
-        //        card.setPositionOfCards(pictureBoxLocation);
-        //    }
-        //}
+        public void putAllCardsInDeck()
+        {
+           foreach(Card card in Player.Hand)
+            {
+                Cards.Add(card);
+            }
+            foreach (Card card in Dealer.Hand)
+            {
+                Cards.Add(card);
+            }
+        }
 
         internal void movePlayerCard(Card randomCard)
         {
@@ -95,5 +101,6 @@ namespace BlackJack
         {
             randomCard.moveDealerCard();
         }
+
     }
 }

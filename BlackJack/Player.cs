@@ -27,5 +27,13 @@ namespace BlackJack
                 card.DrawPlayerCard(graphics);
             }
         }
+
+        public void Reset()
+        {
+            Hand = new List<Card>();
+            Score = 0;
+        }
+
+   
     }
 }
