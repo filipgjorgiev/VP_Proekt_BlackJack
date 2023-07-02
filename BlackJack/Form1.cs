@@ -381,7 +381,7 @@ namespace BlackJack
             scene.Bid = 0;
             if (scene.Cards.Count < 15) // check if the total cards are less than 15
             {
-                scene = new Scene(); // put all cards in the deck again
+                scene = new Scene(); // reset the scene and put back all cards
 
             }
       
@@ -544,7 +544,7 @@ namespace BlackJack
                     }
                     scene.Dealer.Hand.Add(StandRandomDealerCard);
                     scene.Cards.Remove(StandRandomDealerCard);
-                 //   updateTotalCards();
+
               
                 }
 
@@ -614,7 +614,6 @@ namespace BlackJack
                 firstDealerCoveredCard.Image = actualImage;
                 if (secondRandomDealerCard.Rank == "Ace" && firstDealerCoveredCard.Rank=="Ace")
                 {
-
                     secondRandomDealerCard.Value = 1;
                 }
           
