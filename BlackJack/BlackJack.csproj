@@ -116,12 +116,17 @@
     <Content Include="Resources\819px-Playing_card_club_3.svg.png" />
     <Content Include="Resources\Ace_of_diamonds.svg.png" />
     <Content Include="Resources\Ace_of_spades.svg.png" />
+    <None Include="Resources\poker chip21.jpg" />
     <None Include="Resources\black poker chip.jpg" />
     <None Include="Resources\red poker chip.png" />
-    <None Include="Resources\Green Table11.jpg" />
+    <None Include="Resources\Green_Table11.jpg" />
     <None Include="Resources\card back red11.png" />
     <None Include="Resources\card back red1.png" />
+    <None Include="Resources\black poker chip1.jpg" />
     <Content Include="Resources\card2_of_spades.png" />
+    <None Include="Resources\Green Table11.jpg" />
+    <None Include="Resources\Green Table12.jpg" />
+    <None Include="Resources\Green Table13.jpg" />
     <Content Include="Resources\ImagesOfCards\10_of_Clubs.png" />
     <Content Include="Resources\ImagesOfCards\10_of_Diamonds.png" />
     <Content Include="Resources\ImagesOfCards\10_of_Hearts.png" />
@@ -178,8 +183,6 @@
     <Content Include="Resources\Playing_card_heart_2.svg_hearts.png" />
     <None Include="Resources\poker chip2.jpg" />
     <None Include="Resources\poker chip1.jpg" />
-    <None Include="Resources\Green Table1.jpg" />
-    <None Include="Resources\Green Table.jpg" />
     <None Include="Resources\20220705_195608.jpg" />
     <None Include="Resources\blackJackTable.jpg" />
   </ItemGroup>

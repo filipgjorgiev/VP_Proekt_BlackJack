@@ -45,6 +45,7 @@ namespace BlackJack
             this.timerHit = new System.Windows.Forms.Timer(this.components);
             this.timerStand = new System.Windows.Forms.Timer(this.components);
             this.btnAllIn = new System.Windows.Forms.Button();
+            this.btnCashOut = new System.Windows.Forms.Button();
             this.rbTenDollarBid = new BlackJack.RoundButton();
             this.rbFiftyDollarBid = new BlackJack.RoundButton();
             this.rbFiveDollarsBid = new BlackJack.RoundButton();
@@ -65,11 +66,12 @@ namespace BlackJack
             // 
             // btnHit
             // 
-            this.btnHit.BackColor = System.Drawing.Color.White;
+            this.btnHit.BackColor = System.Drawing.Color.DarkBlue;
             this.btnHit.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.8F);
             this.btnHit.ForeColor = System.Drawing.Color.White;
-            this.btnHit.Image = global::BlackJack.Properties.Resources.Green_Table11;
+            this.btnHit.Image = global::BlackJack.Properties.Resources.Green_Table13;
             this.btnHit.Location = new System.Drawing.Point(711, 322);
+            this.btnHit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHit.Name = "btnHit";
             this.btnHit.Size = new System.Drawing.Size(207, 127);
             this.btnHit.TabIndex = 1;
@@ -80,13 +82,14 @@ namespace BlackJack
             // 
             // btnStand
             // 
-            this.btnStand.BackColor = System.Drawing.Color.White;
+            this.btnStand.BackColor = System.Drawing.Color.Transparent;
             this.btnStand.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.8F);
             this.btnStand.ForeColor = System.Drawing.Color.White;
-            this.btnStand.Image = global::BlackJack.Properties.Resources.Green_Table11;
+            this.btnStand.Image = global::BlackJack.Properties.Resources.Green_Table13;
             this.btnStand.Location = new System.Drawing.Point(136, 322);
+            this.btnStand.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStand.Name = "btnStand";
-            this.btnStand.Size = new System.Drawing.Size(199, 136);
+            this.btnStand.Size = new System.Drawing.Size(199, 135);
             this.btnStand.TabIndex = 3;
             this.btnStand.Text = "Stand";
             this.btnStand.UseVisualStyleBackColor = false;
@@ -107,9 +110,8 @@ namespace BlackJack
             // 
             // pbCard1
             // 
-            this.pbCard1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCard1.BackgroundImage")));
-            this.pbCard1.Image = global::BlackJack.Properties.Resources.card_back_red11;
-            this.pbCard1.Location = new System.Drawing.Point(1090, 490);
+            this.pbCard1.Image = global::BlackJack.Properties.Resources.card_back_red1;
+            this.pbCard1.Location = new System.Drawing.Point(1091, 490);
             this.pbCard1.Margin = new System.Windows.Forms.Padding(0);
             this.pbCard1.Name = "pbCard1";
             this.pbCard1.Size = new System.Drawing.Size(133, 181);
@@ -119,9 +121,8 @@ namespace BlackJack
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackgroundImage = global::BlackJack.Properties.Resources.Green_Table11;
-            this.pictureBox2.Image = global::BlackJack.Properties.Resources.card_back_red11;
-            this.pictureBox2.Location = new System.Drawing.Point(1090, 91);
+            this.pictureBox2.Image = global::BlackJack.Properties.Resources.card_back_red1;
+            this.pictureBox2.Location = new System.Drawing.Point(1091, 91);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(133, 181);
@@ -139,8 +140,9 @@ namespace BlackJack
             this.btnDeal.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnDeal.CausesValidation = false;
             this.btnDeal.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.8F);
-            this.btnDeal.Image = global::BlackJack.Properties.Resources.Green_Table11;
-            this.btnDeal.Location = new System.Drawing.Point(1038, 322);
+            this.btnDeal.Image = global::BlackJack.Properties.Resources.Green_Table13;
+            this.btnDeal.Location = new System.Drawing.Point(1037, 322);
+            this.btnDeal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDeal.Name = "btnDeal";
             this.btnDeal.Size = new System.Drawing.Size(199, 127);
             this.btnDeal.TabIndex = 8;
@@ -194,15 +196,33 @@ namespace BlackJack
             // btnAllIn
             // 
             this.btnAllIn.BackColor = System.Drawing.Color.DarkBlue;
+            this.btnAllIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAllIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F);
-            this.btnAllIn.ForeColor = System.Drawing.Color.White;
+            this.btnAllIn.ForeColor = System.Drawing.Color.Linen;
             this.btnAllIn.Location = new System.Drawing.Point(20, 480);
+            this.btnAllIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAllIn.Name = "btnAllIn";
-            this.btnAllIn.Size = new System.Drawing.Size(130, 52);
+            this.btnAllIn.Size = new System.Drawing.Size(131, 52);
             this.btnAllIn.TabIndex = 14;
             this.btnAllIn.Text = "All-in";
             this.btnAllIn.UseVisualStyleBackColor = false;
             this.btnAllIn.Click += new System.EventHandler(this.btnAllIn_Click);
+            // 
+            // btnCashOut
+            // 
+            this.btnCashOut.BackColor = System.Drawing.Color.DarkBlue;
+            this.btnCashOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCashOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCashOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F);
+            this.btnCashOut.ForeColor = System.Drawing.Color.Linen;
+            this.btnCashOut.Location = new System.Drawing.Point(20, 38);
+            this.btnCashOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCashOut.Name = "btnCashOut";
+            this.btnCashOut.Size = new System.Drawing.Size(159, 52);
+            this.btnCashOut.TabIndex = 15;
+            this.btnCashOut.Text = "Cash-out";
+            this.btnCashOut.UseVisualStyleBackColor = false;
+            this.btnCashOut.Click += new System.EventHandler(this.btnCashOut_Click);
             // 
             // rbTenDollarBid
             // 
@@ -210,7 +230,8 @@ namespace BlackJack
             this.rbTenDollarBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
             this.rbTenDollarBid.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.rbTenDollarBid.Image = global::BlackJack.Properties.Resources.black_poker_chip;
-            this.rbTenDollarBid.Location = new System.Drawing.Point(147, 550);
+            this.rbTenDollarBid.Location = new System.Drawing.Point(149, 571);
+            this.rbTenDollarBid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbTenDollarBid.Name = "rbTenDollarBid";
             this.rbTenDollarBid.Size = new System.Drawing.Size(119, 105);
             this.rbTenDollarBid.TabIndex = 12;
@@ -224,7 +245,8 @@ namespace BlackJack
             this.rbFiftyDollarBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
             this.rbFiftyDollarBid.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.rbFiftyDollarBid.Image = global::BlackJack.Properties.Resources.red_poker_chip;
-            this.rbFiftyDollarBid.Location = new System.Drawing.Point(293, 550);
+            this.rbFiftyDollarBid.Location = new System.Drawing.Point(295, 571);
+            this.rbFiftyDollarBid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbFiftyDollarBid.Name = "rbFiftyDollarBid";
             this.rbFiftyDollarBid.Size = new System.Drawing.Size(123, 105);
             this.rbFiftyDollarBid.TabIndex = 11;
@@ -239,9 +261,10 @@ namespace BlackJack
             this.rbFiveDollarsBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
             this.rbFiveDollarsBid.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.rbFiveDollarsBid.Image = global::BlackJack.Properties.Resources.poker_chip2;
-            this.rbFiveDollarsBid.Location = new System.Drawing.Point(12, 555);
+            this.rbFiveDollarsBid.Location = new System.Drawing.Point(12, 571);
+            this.rbFiveDollarsBid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbFiveDollarsBid.Name = "rbFiveDollarsBid";
-            this.rbFiveDollarsBid.Size = new System.Drawing.Size(110, 100);
+            this.rbFiveDollarsBid.Size = new System.Drawing.Size(109, 100);
             this.rbFiveDollarsBid.TabIndex = 4;
             this.rbFiveDollarsBid.Text = "$5";
             this.rbFiveDollarsBid.UseVisualStyleBackColor = false;
@@ -252,8 +275,9 @@ namespace BlackJack
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.BackgroundImage = global::BlackJack.Properties.Resources.Green_Table11;
-            this.ClientSize = new System.Drawing.Size(1306, 840);
+            this.BackgroundImage = global::BlackJack.Properties.Resources.Green_Table13;
+            this.ClientSize = new System.Drawing.Size(1357, 802);
+            this.Controls.Add(this.btnCashOut);
             this.Controls.Add(this.btnAllIn);
             this.Controls.Add(this.lblTotalCards);
             this.Controls.Add(this.rbTenDollarBid);
@@ -269,7 +293,11 @@ namespace BlackJack
             this.Controls.Add(this.btnHit);
             this.Controls.Add(this.lblBid);
             this.ForeColor = System.Drawing.SystemColors.Window;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pbCard1)).EndInit();
@@ -298,6 +326,7 @@ namespace BlackJack
         private System.Windows.Forms.Timer timerHit;
         private System.Windows.Forms.Timer timerStand;
         private System.Windows.Forms.Button btnAllIn;
+        private System.Windows.Forms.Button btnCashOut;
     }
 }
 

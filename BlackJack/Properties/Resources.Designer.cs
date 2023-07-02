@@ -93,26 +93,6 @@ namespace BlackJack.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap card_back_red11 {
-            get {
-                object obj = ResourceManager.GetObject("card back red11", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Green_Table {
-            get {
-                object obj = ResourceManager.GetObject("Green Table", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Green_Table1 {
             get {
                 object obj = ResourceManager.GetObject("Green Table1", resourceCulture);
@@ -133,9 +113,19 @@ namespace BlackJack.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap poker_chip1 {
+        internal static System.Drawing.Bitmap Green_Table12 {
             get {
-                object obj = ResourceManager.GetObject("poker chip1", resourceCulture);
+                object obj = ResourceManager.GetObject("Green Table12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Green_Table13 {
+            get {
+                object obj = ResourceManager.GetObject("Green Table13", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -33,13 +33,13 @@ namespace BlackJack
 
         public void movePlayerCard()
         {
-            Position_Of_Player_Card = new Point(Position_Of_Player_Card.X - 15, Position_Of_Player_Card.Y);
+            Position_Of_Player_Card = new Point(Position_Of_Player_Card.X - 16, Position_Of_Player_Card.Y);
              
         }
 
         public void moveDealerCard()
         {
-            Position_Of_Dealer_Card = new Point(Position_Of_Dealer_Card.X - 15, Position_Of_Dealer_Card.Y);
+            Position_Of_Dealer_Card = new Point(Position_Of_Dealer_Card.X - 16, Position_Of_Dealer_Card.Y);
 
         }
 
