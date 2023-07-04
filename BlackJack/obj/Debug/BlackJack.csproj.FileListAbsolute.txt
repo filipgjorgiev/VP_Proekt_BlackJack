@@ -2,7 +2,6 @@ C:\Users\Filip\source\repos\BlackJack\BlackJack\bin\Debug\BlackJack.exe.config
 C:\Users\Filip\source\repos\BlackJack\BlackJack\bin\Debug\BlackJack.exe
 C:\Users\Filip\source\repos\BlackJack\BlackJack\bin\Debug\BlackJack.pdb
 C:\Users\Filip\source\repos\BlackJack\BlackJack\obj\Debug\BlackJack.csproj.AssemblyReference.cache
-C:\Users\Filip\source\repos\BlackJack\BlackJack\obj\Debug\BlackJack.Form1.resources
 C:\Users\Filip\source\repos\BlackJack\BlackJack\obj\Debug\BlackJack.Properties.Resources.resources
 C:\Users\Filip\source\repos\BlackJack\BlackJack\obj\Debug\BlackJack.csproj.GenerateResource.cache
 C:\Users\Filip\source\repos\BlackJack\BlackJack\obj\Debug\BlackJack.csproj.CoreCompileInputs.cache
@@ -19,3 +18,4 @@ C:\Users\Filip\source\repos\BlackJack\BlackJack\bin\Debug\NHibernate.xml
 C:\Users\Filip\source\repos\BlackJack\BlackJack\bin\Debug\Remotion.Linq.xml
 C:\Users\Filip\source\repos\BlackJack\BlackJack\bin\Debug\Remotion.Linq.EagerFetching.xml
 C:\Users\Filip\source\repos\BlackJack\BlackJack\obj\Debug\BlackJack.csproj.CopyComplete
+C:\Users\Filip\source\repos\BlackJack\BlackJack\obj\Debug\BlackJack.Form1.resources

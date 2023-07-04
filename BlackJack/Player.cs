@@ -34,6 +34,6 @@ namespace BlackJack
             Score = 0;
         }
 
-   
+
     }
 }

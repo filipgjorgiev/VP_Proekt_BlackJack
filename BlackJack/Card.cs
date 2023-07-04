@@ -15,15 +15,15 @@ namespace BlackJack
 
         public String Suit { get; set; } // sign of card
 
-       // public Point CurrentPosition { get; set; }
-        public Point Position_Of_Dealer_Card { get; set; }= new Point(815, 75);
+
+        public Point Position_Of_Dealer_Card { get; set; } = new Point(815, 75);
 
         public Point Position_Of_Player_Card { get; set; } = new Point(815, 400);
 
-   
+
         public int Value { get; set; }
 
-        public Card(Image image, String numberOfCard, string signOfCard,int value)
+        public Card(Image image, String numberOfCard, string signOfCard, int value)
         {
             Image = image;
             Rank = numberOfCard;
@@ -33,13 +33,13 @@ namespace BlackJack
 
         public void movePlayerCard()
         {
-            Position_Of_Player_Card = new Point(Position_Of_Player_Card.X - 16, Position_Of_Player_Card.Y);
-             
+            Position_Of_Player_Card = new Point(Position_Of_Player_Card.X - 15, Position_Of_Player_Card.Y);
+
         }
 
         public void moveDealerCard()
         {
-            Position_Of_Dealer_Card = new Point(Position_Of_Dealer_Card.X - 16, Position_Of_Dealer_Card.Y);
+            Position_Of_Dealer_Card = new Point(Position_Of_Dealer_Card.X - 15, Position_Of_Dealer_Card.Y);
 
         }
 
@@ -54,6 +54,6 @@ namespace BlackJack
         }
 
 
-      
+
     }
 }
