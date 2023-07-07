@@ -117,11 +117,19 @@ namespace BlackJack
             InitializeComponent();
 
             scene = new Scene();
-            this.DoubleBuffered = true;     
+            this.DoubleBuffered = true;
+
+
+
             lblBid.Text = "Bid: $0";
 
 
+
+
         }
+
+
+
         public void updateFiveDollarsBid()
         {
             scene.Player.TotalMoney -= 5;
@@ -143,6 +151,8 @@ namespace BlackJack
                 {
                     rbFiveDollarsBid.Visible = false;
                     btnAllIn.Visible = false;
+                    btnCashOut.Visible = false;
+
 
                 }
             }
@@ -174,6 +184,7 @@ namespace BlackJack
                     rbFiveDollarsBid.Visible = false;
                     rbTenDollarBid.Visible = false;
                     btnAllIn.Visible = false;
+                    btnCashOut.Visible = false;
                 }
                 rbFiftyDollarBid.Visible = false;
 
@@ -211,7 +222,7 @@ namespace BlackJack
 
                     rbFiveDollarsBid.Visible = false;
                     btnAllIn.Visible = false;
-
+                    btnCashOut.Visible = false;
                 }
             }
 
@@ -225,7 +236,7 @@ namespace BlackJack
 
         public void updateScore()
         {
-           
+
             lblPlayerScore.Text = "Player: " + scene.Player.Score.ToString();
             lblDealerScore.Text = "Dealer: " + scene.Dealer.Score.ToString();
 
@@ -258,7 +269,7 @@ namespace BlackJack
                     scene.Player.Score += firstRandomPlayerCard.Value;
 
                     updateScore();
-                  
+
                     firstCardsMoving = false;
                     secondCardsMoving = true;
                     DealTimerTicks = 0;
@@ -273,6 +284,11 @@ namespace BlackJack
                 if (DealTimerTicks == stopPosition)
                 {
                     stopPosition = DealTimerTicks - 4;
+                    if (firstRandomDealerCard.Rank == "Ace" && secondRandomDealerCard.Rank == "Ace")
+                    {
+                        secondRandomDealerCard.Value = 1;
+                    }
+
                     if (firstRandomPlayerCard.Rank == "Ace" && secondRandomPlayerCard.Rank == "Ace")
                     {
                         secondRandomPlayerCard.Value = 1;
@@ -283,7 +299,7 @@ namespace BlackJack
                     scene.Player.Score += secondRandomPlayerCard.Value;
                     scene.Dealer.Score += secondRandomDealerCard.Value;
                     updateScore();
-              
+
 
                     secondCardsMoving = false;
                     firstCardsMoving = true;
@@ -354,6 +370,26 @@ namespace BlackJack
 
         private void Reset()
         {
+            if (scene.Player.TotalMoney == 0)
+            {
+                DialogResult result = MessageBox.Show("You lost all your money. Do you want to start a new game?", "",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                {
+                    Close();
+                }
+                else
+                {
+                   
+                    scene.Player.TotalMoney = 200;
+                    rbTenDollarBid.Visible = true;
+                    rbFiveDollarsBid.Visible = true;
+                    rbFiftyDollarBid.Visible = true;
+
+                    lblPlayerMoney.Text = "Player total: $200";
+                }
+
+            }
             firstCardsMoving = true;
             secondCardsMoving = false;
 
@@ -366,14 +402,18 @@ namespace BlackJack
             StandTimerTicks = 0;
 
             scene.Bid = 0;
+
+            int playerMoney = scene.Player.TotalMoney;
+
             if (scene.Cards.Count < 15) // check if the total cards are less than 15
             {
                 scene = new Scene(); // put all cards in the deck again
-
+                scene.Player.TotalMoney = playerMoney;
             }
 
             scene.Dealer.Reset();
             scene.Player.Reset();
+            scene.Player.TotalMoney = playerMoney;
             btnHit.Visible = false;
             btnStand.Visible = false;
             btnAllIn.Visible = true;
@@ -385,6 +425,7 @@ namespace BlackJack
             rbTenDollarBid.Visible = true;
             btnDeal.Visible = false;
             btnCashOut.Visible = true;
+            lblPlayerMoney.Text = "Player total: $"+scene.Player.TotalMoney;
 
 
             resetChips();
@@ -413,34 +454,7 @@ namespace BlackJack
         }
 
 
-        private void ResetGame()
-        {
-            if (scene.Player.TotalMoney == 0)
-            {
-                DialogResult result = MessageBox.Show("You lost all your money. Do you want to start a new game?", "",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.No)
-                {
-                    Close();
-                }
-                else
-                {
-                    Reset();
-                    scene.Player.TotalMoney = 200;
-                    rbTenDollarBid.Visible = true;
-                    rbFiveDollarsBid.Visible = true;
-                    rbFiftyDollarBid.Visible = true;
-
-                    lblPlayerMoney.Text = "Player money: $200";
-                }
-
-            }
-            else
-            {
-                Reset();
-            }
-
-        }
+     
 
         private void timerHit_Tick(object sender, EventArgs e)
         {
@@ -481,7 +495,7 @@ namespace BlackJack
             DialogResult result = MessageBox.Show("No one won, the score of both is 21", "", MessageBoxButtons.OK);
             if (result == DialogResult.OK)
             {
-                ResetGame();
+                Reset();
             }
         }
 
@@ -491,7 +505,7 @@ namespace BlackJack
             DialogResult result = MessageBox.Show("Dealer wins !!!", "Bust!", MessageBoxButtons.OK);
             if (result == DialogResult.OK)
             {
-                ResetGame();
+                Reset();
             }
         }
 
@@ -500,7 +514,7 @@ namespace BlackJack
             DialogResult result = MessageBox.Show("You win !!!", "Congratulations!", MessageBoxButtons.OK);
             if (result == DialogResult.OK)
             {
-                ResetGame();
+                Reset();
             }
         }
 
@@ -531,7 +545,7 @@ namespace BlackJack
                     }
                     scene.Dealer.Hand.Add(StandRandomDealerCard);
                     scene.Cards.Remove(StandRandomDealerCard);
-                    //   updateTotalCards();
+
 
                 }
 
