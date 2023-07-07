@@ -11,7 +11,7 @@ namespace BlackJack
     {
         public List<Card> Cards { get; set; }
 
-        Random random = new Random();
+        
 
         public Player Player { get; set; }
 
@@ -35,11 +35,12 @@ namespace BlackJack
 
         public void setCards()
         {
-         
+
             foreach (string rank in ranks)
             {
                 int rankValue;
-                if(rank.Equals("Jack") || rank.Equals("Queen") || rank.Equals("King")){
+                if (rank.Equals("Jack") || rank.Equals("Queen") || rank.Equals("King"))
+                {
 
                     rankValue = 10;
 
@@ -79,17 +80,7 @@ namespace BlackJack
             }
         }
 
-        public void putAllCardsInDeck()
-        {
-           foreach(Card card in Player.Hand)
-            {
-                Cards.Add(card);
-            }
-            foreach (Card card in Dealer.Hand)
-            {
-                Cards.Add(card);
-            }
-        }
+
 
         internal void movePlayerCard(Card randomCard)
         {

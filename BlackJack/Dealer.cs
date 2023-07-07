@@ -20,7 +20,7 @@ namespace BlackJack
 
         public void Draw(Graphics g)
         {
-            foreach(Card card in Hand)
+            foreach (Card card in Hand)
             {
                 card.DrawDealerCard(g);
             }
